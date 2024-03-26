@@ -1,0 +1,130 @@
+:root {
+	--cell-size: 100px;
+	--l: 10px;
+  font-family: monospace;
+}
+
+body {
+	margin: 0;
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  align-items: center; /* Center children horizontally */
+  justify-content: center; /* Center children vertically if the container has defined height */
+  height: 100vh;
+  background-color: rgb(255, 255, 207);
+}
+
+.board {
+	width: 100vw;
+	height: 100vh;
+	display: grid;
+	justify-content: center;
+	align-content: center;
+	justify-items: center;
+	align-items: center;
+	grid-template-columns: repeat(3, auto)
+}
+
+
+.cell {
+	width: var(--cell-size);
+	height: var(--cell-size);
+	border: 1px solid black;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	cursor: pointer;
+  background-color: #ffff8d;
+  border-radius: 3px;
+}
+
+
+
+.cell.x::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f005";
+  color: black;
+  font-size: 2rem;
+  /* background-color: #e5e526; */
+}
+
+
+.cell.circle::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f186";
+  color: #000000;
+  font-size: 2rem;
+}
+
+#winningMessageText {
+  display: none;
+}
+
+#winningMessageText.show {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 8px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+#restartButton {
+  /* transition: all .4s ease; */
+  color: #000000;
+  border: 1px solid black;
+  font-family: monospace;
+  text-align: center;
+  line-height: 1;
+  background-color: rgb(136, 231, 142);
+  padding: 10px;
+  border-radius: 15px;
+  box-shadow: 0 7px #999;
+}
+
+#restartButton:hover{
+  color: white;
+  background-color: rgb(214, 214, 214);
+  border: 1px solid black;
+  font-weight: 600;
+  /* box-shadow: 2px 2px rgb(154, 154, 154); */
+}
+
+#restartButton:active {
+  background-color: rgb(214, 214, 214);
+  box-shadow: 0 2px #666;
+  transform: translateY(4px);
+}
+
+.fa-moon, .fa-star {
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.cell.winner {
+  border-color: rgb(0, 0, 0);
+  border-width: 2px;
+  background-color: rgb(173, 255, 101)
+}
+
+
+/* Hover effect for player X */
+.board.x .cell:not(.x):not(.circle):hover::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f005";
+  color: grey;
+  opacity: 0.5;
+}
+
+/* Hover effect for player O */
+.board.circle .cell:not(.x):not(.circle):hover::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f186";
+  color: grey;
+  opacity: 0.5;
+}
